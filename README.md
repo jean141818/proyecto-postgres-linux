@@ -22,6 +22,8 @@ Este proyecto implementa un servidor **PostgreSQL en un entorno Linux** utilizan
 - [x] **Capturar evidencias** de funcionamiento
 
 ## 🏗️ Arquitectura del Sistema
+
+```text
 Windows 11 (Host)
 │
 ├── Docker Desktop con WSL2
@@ -37,8 +39,7 @@ Windows 11 (Host)
 │ └── Usuario: admin
 │
 └── Git / GitHub (Control de versiones)
-
-text
+```
 
 ## 📊 Esquema de Base de Datos
 
@@ -70,14 +71,14 @@ CREATE TABLE proyectos (
     fecha_fin DATE
 );
 ```
-#Relaciones:
+# Relaciones:
 Un departamento tiene muchos empleados (1:N)
 
 Un empleado puede ser responsable de muchos proyectos (1:N)
 
 Un empleado pertenece a un departamento (N:1)
 
-🚀 Instalación y Ejecución
+# 🚀 Instalación y Ejecución
 Requisitos Previos
 Windows 10/11 con WSL2 habilitado
 
@@ -87,14 +88,14 @@ Git para control de versiones
 
 Paso 1: Clonar el repositorio
 bash
-git clone https://github.com/TU_USUARIO_GITHUB/proyecto-postgres-linux.git
+git clone https://github.com/jean141818/proyecto-postgres-linux.git
 cd proyecto-postgres-linux
 Paso 2: Levantar PostgreSQL con Docker
 bash
-# Opción A: Usando docker-compose (recomendado)
+## Opción A: Usando docker-compose (recomendado)
 docker-compose up -d
 
-# Opción B: Comando directo
+## Opción B: Comando directo
 docker run --name postgres-proyecto \
   -e POSTGRES_PASSWORD=admin123 \
   -e POSTGRES_USER=admin \
@@ -102,16 +103,19 @@ docker run --name postgres-proyecto \
   -p 5432:5432 \
   -d postgres:latest
 Paso 3: Acceder a la base de datos
-bash
-# Conectarse al contenedor y a PostgreSQL
+```bash
+#Conectarse al contenedor y a PostgreSQL
 docker exec -it postgres-proyecto psql -U admin -d proyectodb
+```
 Paso 4: Ejecutar scripts SQL
-sql
+
+```sql
 -- Dentro de psql, ejecutar:
 \i scripts/01_database.sql    -- Crear tablas
 \i scripts/02_insert_data.sql -- Insertar datos
 \i scripts/03_queries.sql     -- Ejecutar consultas
-📸 Evidencias de Implementación
+```
+# 📸 Evidencias de Implementación
 1. Docker en Ejecución
 https://screenshots/docker-running.png
 Contenedor PostgreSQL activo y funcionando
@@ -119,9 +123,10 @@ Contenedor PostgreSQL activo y funcionando
 2. Tablas Creadas en PostgreSQL
 https://screenshots/postgres-tables.png
 
-bash
+```bash
 # Comando ejecutado:
 docker exec postgres-windows psql -U admin -d proyectodb -c "\dt"
+```
 3. Datos Insertados
 https://screenshots/table-data.png
 Información de empleados insertada correctamente
@@ -134,11 +139,11 @@ Relacionando empleados, departamentos y proyectos
 https://screenshots/git-working.png
 Commits realizados y sincronizados con GitHub
 
-📁 Estructura del Proyecto
+# 📁 Estructura del Proyecto
 
 <img width="395" height="387" alt="image" src="https://github.com/user-attachments/assets/5e4ff6cb-3ac0-4f0b-a5d1-b865e0236e72" />
 
-🔍 Consultas SQL Demostrativas
+# 🔍 Consultas SQL Demostrativas
 
 Consulta 1: Empleados con su departamento
 ```sql
@@ -164,22 +169,27 @@ FROM departamentos d
 LEFT JOIN empleados e ON d.id_dep = e.id_dep
 GROUP BY d.id_dep, d.nombre;
 ```
-🛠️ Comandos Útiles
-Docker
-bash
+# 🛠️ Comandos Útiles
+## Docker
+```bash
 # Ver contenedores activos
 docker ps
-
-# Ver logs de PostgreSQL
+```
+### Ver logs de PostgreSQL
+```bash
 docker logs postgres-proyecto
-
-# Detener contenedor
+```
+### Detener contenedor
+```bash
 docker stop postgres-proyecto
-
-# Eliminar contenedor
+```
+### Eliminar contenedor
+```bash
 docker rm postgres-proyecto
-PostgreSQL
-sql
+```
+## PostgreSQL
+
+```sql
 -- Conectarse a la BD
 \c proyectodb
 
@@ -191,8 +201,10 @@ sql
 
 -- Ejecutar script externo
 \i ruta/script.sql
-Git
-bash
+```
+
+## Git
+```bash
 # Sincronizar cambios
 git add .
 git commit -m "Descripción del cambio"
@@ -200,8 +212,10 @@ git push origin main
 
 # Actualizar repo local
 git pull origin main
-📊 Resultados Obtenidos
-Métricas del Proyecto:
+
+```
+# 📊 Resultados Obtenidos
+## Métricas del Proyecto:
 ✅ 3 tablas relacionadas creadas
 
 ✅ 15+ registros de datos insertados
@@ -212,7 +226,7 @@ Métricas del Proyecto:
 
 ✅ 100% cobertura de objetivos del proyecto
 
-Tecnologías Dominadas:
+# Tecnologías Dominadas:
 Docker para contenerización
 
 PostgreSQL para bases de datos relacionales
@@ -223,25 +237,4 @@ Git/GitHub para control de versiones
 
 SQL para manipulación de datos
 
-🚀 Cómo Verificar el Proyecto
-Para evaluadores:
-Clonar el repositorio: git clone [url]
 
-Revisar estructura: Verificar carpetas y archivos
-
-Ejecutar Docker: docker-compose up -d
-
-Verificar tablas: Acceder a PostgreSQL y ejecutar \dt
-
-Revisar evidencias: Ver capturas en /screenshots/
-
-Criterios de cumplimiento:
-PostgreSQL instalado en Linux (contenedor)
-
-3 tablas relacionadas creadas
-
-Datos insertados en cada tabla
-
-Consultas SQL funcionando
-
-Evidencias documentadas en Git
