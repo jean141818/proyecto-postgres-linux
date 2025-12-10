@@ -1,0 +1,25 @@
+﻿# Docker
+docker-data/
+*.log
+
+# PostgreSQL
+*.pid
+*.lock
+postgresql_data/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Backup grandes
+*.dump
+*.backup
+
+# Archivos temporales
+*.tmp
+temp/
