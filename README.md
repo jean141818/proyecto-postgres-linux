@@ -79,29 +79,32 @@ Un empleado puede ser responsable de muchos proyectos (1:N)
 Un empleado pertenece a un departamento (N:1)
 
 # 🚀 Instalación y Ejecución
-Requisitos Previos
+## Requisitos Previos
 Windows 10/11 con WSL2 habilitado
 
 Docker Desktop instalado
 
 Git para control de versiones
 
-Paso 1: Clonar el repositorio
-bash
+### Paso 1: Clonar el repositorio
+```bash
 git clone https://github.com/jean141818/proyecto-postgres-linux.git
 cd proyecto-postgres-linux
-Paso 2: Levantar PostgreSQL con Docker
-bash
+```
+### Paso 2: Levantar PostgreSQL con Docker
+```bash
 ## Opción A: Usando docker-compose (recomendado)
 docker-compose up -d
 
 ## Opción B: Comando directo
-docker run --name postgres-proyecto \
-  -e POSTGRES_PASSWORD=admin123 \
-  -e POSTGRES_USER=admin \
-  -e POSTGRES_DB=proyectodb \
-  -p 5432:5432 \
+docker run --name postgres-windows `
+  -e POSTGRES_PASSWORD=admin123 `
+  -e POSTGRES_USER=admin `
+  -e POSTGRES_DB=proyectodb `
+  -p 5432:5432 `
+  -v "${PWD}\scripts:/scripts" `
   -d postgres:latest
+```
 Paso 3: Acceder a la base de datos
 ```bash
 #Conectarse al contenedor y a PostgreSQL
@@ -115,29 +118,6 @@ Paso 4: Ejecutar scripts SQL
 \i scripts/02_insert_data.sql -- Insertar datos
 \i scripts/03_queries.sql     -- Ejecutar consultas
 ```
-# 📸 Evidencias de Implementación
-1. Docker en Ejecución
-https://screenshots/docker-running.png
-Contenedor PostgreSQL activo y funcionando
-
-2. Tablas Creadas en PostgreSQL
-https://screenshots/postgres-tables.png
-
-```bash
-# Comando ejecutado:
-docker exec postgres-windows psql -U admin -d proyectodb -c "\dt"
-```
-3. Datos Insertados
-https://screenshots/table-data.png
-Información de empleados insertada correctamente
-
-4. Consultas con JOIN
-https://screenshots/query-join.png
-Relacionando empleados, departamentos y proyectos
-
-5. Control de Versiones con Git
-https://screenshots/git-working.png
-Commits realizados y sincronizados con GitHub
 
 # 📁 Estructura del Proyecto
 
@@ -236,5 +216,6 @@ Linux en entorno contenedor
 Git/GitHub para control de versiones
 
 SQL para manipulación de datos
+
 
 
