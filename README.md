@@ -1,12 +1,12 @@
 # 🟢 Proyecto PostgreSQL en Linux desde Windows 11
 
 ![GitHub](https://img.shields.io/badge/status-completado-brightgreen)
-![GitHub last commit](https://img.shields.io/github/last-commit/TU_USUARIO_GITHUB/proyecto-postgres-linux)
+![GitHub last commit](https://img.shields.io/github/last-commit/jean141818/proyecto-postgres-linux)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791)
 ![Docker](https://img.shields.io/badge/Docker-✓-2496ED)
 ![Windows 11](https://img.shields.io/badge/Windows-11-0078D4)
 
-**🔗 URL del Repositorio:** [https://github.com/TU_USUARIO_GITHUB/proyecto-postgres-linux](https://github.com/TU_USUARIO_GITHUB/proyecto-postgres-linux)
+**🔗 URL del Repositorio:** [https://github.com/jean141818/proyecto-postgres-linux](https://github.com/jean141818/proyecto-postgres-linux)
 
 ## 📋 Descripción del Proyecto
 
@@ -216,6 +216,7 @@ Linux en entorno contenedor
 Git/GitHub para control de versiones
 
 SQL para manipulación de datos
+
 
 
 
